@@ -7,7 +7,7 @@ class Program
     // Parkeringsplatser
     static List<(string vehicleType, string regNumber)>[] parkingSpots = new List<(string, string)>[101];
     static readonly TimeSpan openingTime = new TimeSpan(7, 0, 0);
-    static readonly TimeSpan closingTime = new TimeSpan(0, 0, 0);
+    static readonly TimeSpan closingTime = new TimeSpan(0, 0, 0); 
 
     static void Main(string[] args)
     {
@@ -17,7 +17,7 @@ class Program
             parkingSpots[i] = new List<(string, string)>();
         }
 
-
+        
         while (true)
         {
             ShowMenu();
@@ -60,7 +60,7 @@ class Program
         Console.Write("Ange registreringsnummer: ");
         string regNumber = Console.ReadLine();
 
-
+        
         if (string.IsNullOrWhiteSpace(regNumber) || (vehicleType != "MC" && vehicleType != "CAR"))
         {
             Console.WriteLine("Ogiltigt fordonstyp eller registreringsnummer angivet.");
@@ -107,7 +107,7 @@ class Program
                 parkingSpots[newSpot].Add(vehicle);
                 parkingSpots[currentSpot].RemoveAt(0); // Ta bort fordonet från sin gamla plats
 
-
+                
                 if (parkingSpots[currentSpot].Count == 0)
                 {
                     parkingSpots[currentSpot] = new List<(string, string)>();
@@ -141,7 +141,7 @@ class Program
         parkingSpots[spot].RemoveAt(0); // Ta bort fordonet
         Console.WriteLine($"Fordonet med registreringsnummer {regNumber} har tagits bort från plats {spot + 1}.");
 
-
+        
         if (parkingSpots[spot].Count == 0)
         {
             parkingSpots[spot] = new List<(string, string)>();
